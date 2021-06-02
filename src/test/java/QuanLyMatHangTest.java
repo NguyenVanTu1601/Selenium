@@ -60,6 +60,8 @@ public class QuanLyMatHangTest {
 
         // kiểm tra xem có chuyển đúng về trang Quản lý hay ko
         Assertions.assertEquals(driver.getTitle(), "Quản lý mặt hàng");
+
+        driver.close();
     }
 
     /* Thêm mặt hàng với tên mặt hàng trống */
@@ -91,11 +93,13 @@ public class QuanLyMatHangTest {
         WebElement textError = driver.findElementById("error_name");
         Assertions.assertEquals(textError.getText(),"Tên mặt hàng không được để trống!");
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+
+        driver.close();
     }
 
     /* Thêm mặt hàng với giá nhập trống*/
     @Test
-    public void addMatHangGiaNhapTrong(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaNhapTrong(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -120,13 +124,15 @@ public class QuanLyMatHangTest {
 
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
 
+        driver.close();
+
         // lý do lỗi : trường nhập giá là số, nhưng nếu xóa hết thì nó là khoảng trắng
         // không thể convert khoảng trắng sang Integer được nên lỗi 404 luôn
     }
 
     /* Thêm mặt hàng với giá bán trống */
     @Test
-    public void addMatHangGiaBanTrong(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaBanTrong(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -152,11 +158,12 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
         // Lỗi y như cái trên
 
+        driver.close();
     }
 
     /* Thêm mặt hàng với giá nhập là số <= 0 */
     @Test
-    public void addMatHangGiaNhapAm(EdgeDriver driver) throws Exception{
+    public void testMatHangGiaNhapAm(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -185,11 +192,13 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(giaNhap.getAttribute("validationMessage").toString(),
                 valuesTest);
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+
+        driver.close();
     }
 
     /* Thêm mặt hàng với giá bán là số <=0 */
     @Test
-    public void addMatHangGiaBanAm(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaBanAm(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -217,12 +226,14 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(giaBan.getAttribute("validationMessage").toString(),
                 valuesTest);
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+
+        driver.close();
     }
 
 
     /* Thêm mặt hàng với giá bán quá lớn > 1 tỷ */
     @Test
-    public void addMatHangGiaBanLon(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaBanLon(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -250,11 +261,13 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(giaBan.getAttribute("validationMessage").toString(),
                 valuesTest);
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+
+        driver.close();
     }
 
     /* Thêm mặt hàng với giá nhập quá lớn > 1 tỷ */
     @Test
-    public void addMatHangGiaNhapLon(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaNhapLon(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -282,11 +295,13 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(giaNhap.getAttribute("validationMessage").toString(),
                 valuesTest);
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+
+        driver.close();
     }
 
     /* Thêm mặt hàng với giá nhập lớn hơn giá bán */
     @Test
-    public void addMatHangGiaNhapLonHonGiaBan(EdgeDriver driver) throws Exception{
+    public void testThemMatHangGiaNhapLonHonGiaBan(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -315,6 +330,7 @@ public class QuanLyMatHangTest {
         Assertions.assertEquals(error_price.getText().toString(),
                 "Giá bán phải lớn hơn giá nhập!");
         Assertions.assertEquals(driver.getTitle().toString(),"Thêm mới sản phẩm");
+        driver.close();
     }
 
     /*--------------------------------------------------------------------------*/
@@ -360,7 +376,7 @@ public class QuanLyMatHangTest {
         alert.accept();
 
         Assertions.assertEquals(driver.getTitle(),"Quản lý mặt hàng");
-        Thread.sleep(5000);
+        driver.close();
     }
 
     /* Sửa mặt hàng với tên mặt hàng trống */
@@ -736,5 +752,94 @@ public class QuanLyMatHangTest {
 
         Assertions.assertEquals(driver.getTitle(),"Quản lý mặt hàng");
         Thread.sleep(5000);
+    }
+
+    /*-------------------------------------------------------------*/
+    @Test
+    public void testTimKiemCoKetquaTraVe(EdgeDriver driver) throws Exception{
+        // đăng nhập
+        driver.manage().window().maximize();
+        driver.get("http://localhost:8081");
+        WebElement username = driver.findElement(By.id("username"));
+        username.sendKeys("huutu2302");
+        WebElement password = driver.findElement(By.id("password"));
+        password.sendKeys("123456");
+        WebElement buttonLogin = driver.findElement(By.id("btnLogin"));
+        buttonLogin.click();
+
+        // vào trang tìm kiếm khi sửa mặt hàng
+        driver.get("http://localhost:8081/products/edit");
+        WebElement inputSearch = driver.findElementById("inputSearch");
+        inputSearch.sendKeys("Sách");
+        WebElement buttonSearch = driver.findElementById("btnSearch");
+        buttonSearch.click();
+
+        // lấy số dòng của bảng
+        WebElement table = driver.findElement(By.xpath("//*[@id='table_mathang']/tbody"));
+        List < WebElement > rows_table = table.findElements(By.tagName("tr"));
+        int rows_count = rows_table.size();
+
+        System.out.println(rows_count + "");
+        Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
+        Assertions.assertEquals(rows_count, 8);
+
+    }
+
+    @Test
+    public void testTimKiemDauVaoTrong(EdgeDriver driver){
+        // đăng nhập
+        driver.manage().window().maximize();
+        driver.get("http://localhost:8081");
+        WebElement username = driver.findElement(By.id("username"));
+        username.sendKeys("huutu2302");
+        WebElement password = driver.findElement(By.id("password"));
+        password.sendKeys("123456");
+        WebElement buttonLogin = driver.findElement(By.id("btnLogin"));
+        buttonLogin.click();
+
+        // vào trang tìm kiếm khi sửa mặt hàng
+        driver.get("http://localhost:8081/products/edit");
+        WebElement inputSearch = driver.findElementById("inputSearch");
+        inputSearch.sendKeys("");
+        WebElement buttonSearch = driver.findElementById("btnSearch");
+        buttonSearch.click();
+
+        // lấy số dòng của bảng
+        WebElement table = driver.findElement(By.xpath("//*[@id='table_mathang']/tbody"));
+        List < WebElement > rows_table = table.findElements(By.tagName("tr"));
+        int rows_count = rows_table.size();
+
+        System.out.println(rows_count + "");
+        Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
+        Assertions.assertEquals(rows_count, 15);
+    }
+
+    @Test
+    public void testTimKiemKhongKetQuaTraVe(EdgeDriver driver){
+        // đăng nhập
+        driver.manage().window().maximize();
+        driver.get("http://localhost:8081");
+        WebElement username = driver.findElement(By.id("username"));
+        username.sendKeys("huutu2302");
+        WebElement password = driver.findElement(By.id("password"));
+        password.sendKeys("123456");
+        WebElement buttonLogin = driver.findElement(By.id("btnLogin"));
+        buttonLogin.click();
+
+        // vào trang tìm kiếm khi sửa mặt hàng
+        driver.get("http://localhost:8081/products/edit");
+        WebElement inputSearch = driver.findElementById("inputSearch");
+        inputSearch.sendKeys("Búa");
+        WebElement buttonSearch = driver.findElementById("btnSearch");
+        buttonSearch.click();
+
+        // lấy số dòng của bảng
+        WebElement table = driver.findElement(By.xpath("//*[@id='table_mathang']/tbody"));
+        List < WebElement > rows_table = table.findElements(By.tagName("tr"));
+        int rows_count = rows_table.size();
+
+        System.out.println(rows_count + "");
+        Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
+        Assertions.assertEquals(rows_count, 0);
     }
 }
