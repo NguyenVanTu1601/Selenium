@@ -40,6 +40,7 @@ public class NhapHangTest {
         WebElement giaNhap = driver.findElement(By.id("price"));
         WebElement soLuong = driver.findElementById("quantity");
         soLuong.clear();
+        soLuong.sendKeys("2");
         WebElement btnNhapHang = driver.findElement(By.id("btnNhapHang"));
         btnNhapHang.click();
 

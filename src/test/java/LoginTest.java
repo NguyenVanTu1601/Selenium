@@ -4,13 +4,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
 @ExtendWith(SeleniumJupiter.class)
 public class LoginTest {
 
     @Test
-    public void testDangNhapDungThongTin(InternetExplorerDriver driver) throws InterruptedException{
+    public void testDangNhapDungThongTin(EdgeDriver driver) throws InterruptedException{
         driver.get("http://localhost:8081");
         WebElement username = driver.findElement(By.id("username"));
         username.sendKeys("tunguyen1601");
@@ -24,7 +25,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testDangNhapSaiTenDangNhap(InternetExplorerDriver driver) throws InterruptedException{
+    public void testDangNhapSaiTenDangNhap(EdgeDriver driver) throws InterruptedException{
         driver.get("http://localhost:8081");
         Thread.sleep(1000);
         WebElement username = driver.findElement(By.id("username"));
@@ -42,7 +43,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testDangNhapSaiMatKhau(InternetExplorerDriver driver) throws InterruptedException{
+    public void testDangNhapSaiMatKhau(EdgeDriver driver) throws InterruptedException{
         driver.get("http://localhost:8081");
         Thread.sleep(1000);
         WebElement username = driver.findElement(By.id("username"));
@@ -60,7 +61,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testDangNhapTenDangNhapTrong(InternetExplorerDriver driver) throws InterruptedException {
+    public void testDangNhapTenDangNhapTrong(EdgeDriver driver) throws InterruptedException {
         driver.get("http://localhost:8081");
         Thread.sleep(1000);
         WebElement username = driver.findElement(By.id("username"));
@@ -76,7 +77,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testDangNhapMatKhauTrong(InternetExplorerDriver driver) throws InterruptedException {
+    public void testDangNhapMatKhauTrong(EdgeDriver driver) throws InterruptedException {
         driver.get("http://localhost:8081");
         Thread.sleep(1000);
         WebElement username = driver.findElement(By.id("username"));
@@ -94,7 +95,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testDangNhapMatKhauVaTenDangNhapTrong(InternetExplorerDriver driver)
+    public void testDangNhapMatKhauVaTenDangNhapTrong(EdgeDriver driver)
             throws InterruptedException {
         driver.get("http://localhost:8081");
         WebElement username = driver.findElement(By.id("username"));

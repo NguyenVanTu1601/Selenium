@@ -66,7 +66,7 @@ public class QuanLyMatHangTest {
 
     /* Thêm mặt hàng với tên mặt hàng trống */
     @Test
-    public void addMatHangTrongTen(EdgeDriver driver) throws Exception{
+    public void testMatHangTrongTen(EdgeDriver driver) throws Exception{
         // đăng nhập
         driver.manage().window().maximize();
         driver.get(url);
@@ -358,7 +358,7 @@ public class QuanLyMatHangTest {
 
         // trang tìm kiếm mặt hàng
         //driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // giao diện sửa
@@ -394,7 +394,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa
@@ -436,7 +436,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa
@@ -458,6 +458,7 @@ public class QuanLyMatHangTest {
 
         Assertions.assertEquals(driver.getTitle().toString(),"Sửa xóa sản phẩm");
 
+        driver.close();
         // lý do lỗi : trường nhập giá là số, nhưng nếu xóa hết thì nó là khoảng trắng
         // không thể convert khoảng trắng sang Integer được nên lỗi 404 luôn
     }
@@ -477,7 +478,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa
@@ -516,7 +517,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         //vào trang sửa
@@ -559,7 +560,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa
@@ -602,7 +603,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa thông tin
@@ -644,7 +645,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // vào trang sửa
@@ -686,7 +687,7 @@ public class QuanLyMatHangTest {
 
         //Vào trang tìm kiếm mặt hàng
         driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // sang sang sửa
@@ -738,7 +739,7 @@ public class QuanLyMatHangTest {
 
         // trang tìm kiếm mặt hàng
         //driver.get(url5);
-        WebElement row = driver.findElement(By.id("54"));
+        WebElement row = driver.findElement(By.id("13"));
         row.click();
 
         // giao diện sửa-xóa
@@ -751,7 +752,7 @@ public class QuanLyMatHangTest {
         alert.accept();
 
         Assertions.assertEquals(driver.getTitle(),"Quản lý mặt hàng");
-        Thread.sleep(5000);
+        Thread.sleep(3000);
     }
 
     /*-------------------------------------------------------------*/
@@ -781,7 +782,7 @@ public class QuanLyMatHangTest {
 
         System.out.println(rows_count + "");
         Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
-        Assertions.assertEquals(rows_count, 8);
+        Assertions.assertEquals(rows_count, 7);
 
     }
 
@@ -811,7 +812,7 @@ public class QuanLyMatHangTest {
 
         System.out.println(rows_count + "");
         Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
-        Assertions.assertEquals(rows_count, 15);
+        Assertions.assertEquals(rows_count, 14);
     }
 
     @Test

@@ -17,7 +17,6 @@ public class NhaCungCapTest {
 
     /* ------------------------------------------------------------------- */
     // Thêm nhà cung cấp
-    // Chưa test
     @Test
     public void testThemNhaCungCapSuccess(EdgeDriver driver){
         // Đăng nhập
@@ -83,6 +82,7 @@ public class NhaCungCapTest {
         WebElement error_name = driver.findElementById("error_name");
         Assertions.assertEquals(error_name.getText(),"Tên nhà cung cấp không được để trống");
         Assertions.assertEquals(driver.getTitle(), "Thêm nhà cung cấp");
+        driver.close();
     }
 
     // để trống tên chủ cửa hàng
@@ -115,6 +115,8 @@ public class NhaCungCapTest {
         WebElement error_name2 = driver.findElementById("error_name2");
         Assertions.assertEquals(error_name2.getText(),"Tên chủ cửa hàng không được để trống");
         Assertions.assertEquals(driver.getTitle(), "Thêm nhà cung cấp");
+
+        driver.close();
     }
 
     // Địa chỉ để trống
@@ -147,6 +149,8 @@ public class NhaCungCapTest {
         WebElement error_address = driver.findElementById("error_add");
         Assertions.assertEquals(error_address.getText(),"Địa chỉ nhà cung cấp không được để trống");
         Assertions.assertEquals(driver.getTitle(), "Thêm nhà cung cấp");
+
+        driver.close();
     }
 
     // số điện thoại để trông
@@ -179,6 +183,8 @@ public class NhaCungCapTest {
         WebElement error_phone = driver.findElementById("error_phone");
         Assertions.assertEquals(error_phone.getText(),"Số điện thoại không được để trống");
         Assertions.assertEquals(driver.getTitle(), "Thêm nhà cung cấp");
+
+        driver.close();
     }
 
     // để trống toàn bộ
@@ -219,6 +225,8 @@ public class NhaCungCapTest {
         Assertions.assertEquals(error_add.getText(),"Địa chỉ nhà cung cấp không được để trống");
         Assertions.assertEquals(error_phone.getText(),"Số điện thoại không được để trống");
         Assertions.assertEquals(driver.getTitle(), "Thêm nhà cung cấp");
+
+        driver.close();
     }
 
     /*-------------------------------------------------------------------------------*/
@@ -250,6 +258,8 @@ public class NhaCungCapTest {
         Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
         Assertions.assertEquals(rows_count, 2);
 
+        driver.close();
+
     }
 
     // Tìm với từ khóa trống
@@ -280,6 +290,8 @@ public class NhaCungCapTest {
         System.out.println(rows_count + "");
         Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
         Assertions.assertEquals(rows_count, 6);
+
+        driver.close();
     }
 
     // Tìm với từ khóa không tồn tại
@@ -309,5 +321,7 @@ public class NhaCungCapTest {
         System.out.println(rows_count + "");
         Assertions.assertEquals(driver.getTitle(),"Tìm kiếm");
         Assertions.assertEquals(rows_count, 0);
+
+        driver.close();
     }
 }
